@@ -4,18 +4,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {render} from 'react-dom';
 import Select from '@jetbrains/ring-ui/components/select/select';
-import Panel from '@jetbrains/ring-ui/components/panel/panel';
-import Button from '@jetbrains/ring-ui/components/button/button';
+import {H1} from '@jetbrains/ring-ui/components/heading/heading';
 
 import 'file-loader?name=[name].[ext]!../../manifest.json'; // eslint-disable-line import/no-unresolved
-import styles from './app.css';
-import sayHello from './sayHello';
-
-const COLOR_OPTIONS = [
-  {key: 'black', label: 'Black'},
-  {key: 'red', label: 'Red'},
-  {key: 'blue', label: 'Blue'}
-];
 
 class Widget extends Component {
   static propTypes = {
@@ -28,70 +19,68 @@ class Widget extends Component {
     const {registerWidgetApi, dashboardApi} = props;
 
     this.state = {
-      isConfiguring: false,
-      selectedColor: COLOR_OPTIONS[0]
+      data: []
     };
-
-    registerWidgetApi({
-      onConfigure: () => this.setState({isConfiguring: true})
-    });
-
-    this.initialize(dashboardApi);
   }
 
-  initialize(dashboardApi) {
-    dashboardApi.readConfig().then(config => {
-      if (!config) {
-        return;
+  async getUsers(query, skip) {
+    return this.props.dashboardApi.fetchHub(
+      'api/rest/users', {
+        query: {
+          query: query && `nameStartsWith: {${query}}`,
+          fields: 'id,login,name,profile(avatar,email(email)),total',
+          orderBy: 'login',
+          $skip: skip,
+          $top: 20
+        }
       }
-      this.setState({selectedColor: config.selectedColor});
-    });
-  }
-
-  saveConfig = async () => {
-    const {selectedColor} = this.state;
-    await this.props.dashboardApi.storeConfig({selectedColor});
-    this.setState({isConfiguring: false});
-  };
-
-  cancelConfig = async () => {
-    this.setState({isConfiguring: false});
-    await this.props.dashboardApi.exitConfigMode();
-    this.initialize(this.props.dashboardApi);
-  };
-
-  changeColor = selectedColor => this.setState({selectedColor});
-
-  renderConfiguration() {
-    const {selectedColor} = this.state;
-
-    return (
-      <div className={styles.widget}>
-        <Select
-          data={COLOR_OPTIONS}
-          selected={selectedColor}
-          onChange={this.changeColor}
-          label="Select text color"
-        />
-        <Panel>
-          <Button blue={true} onClick={this.saveConfig}>{'Save'}</Button>
-          <Button onClick={this.cancelConfig}>{'Cancel'}</Button>
-        </Panel>
-      </div>
     );
   }
 
-  render() {
-    const {selectedColor, isConfiguring} = this.state;
+  async loadUsers(query, loadMore = false) {
+    const {data: oldData} = this.state;
+    this.setState({
+      loadingUsers: true,
+      query
+    });
+    const userPage = await this.getUsers(query, loadMore ? oldData.length : 0);
+    const newData = userPage.users.map(user => ({
+      key: user.id,
+      label: `${user.name} (${user.login})`,
+      description: ((user.profile || {}).email || {}).email,
+      icon: user.profile.avatar.url,
+      user
+    }));
+    this.setState({
+      loadingUsers: false,
+      data: loadMore ? oldData.concat(newData) : newData
+    });
+  }
 
-    if (isConfiguring) {
-      return this.renderConfiguration();
-    }
+  selectUser(user) {
+    this.setState({selectedUser: user})
+  }
+
+  render() {
+    const {data, query, loadingUsers, selected} = this.state;
 
     return (
-      <div className={styles.widget}>
-        <h1 style={{color: selectedColor.key}}>{sayHello()}</h1>
-        <p>{'Select "Edit..." option in widget dropdown to configure text color'}</p>
+      <div>
+        <H1>Select User to Wipe</H1>
+        <Select
+          multiple={false}
+          loading={loadingUsers}
+          filter={{fn: () => true}}
+          onOpen={() => this.loadUsers('')}
+          onClose={() => this.setState({data: []})}
+          onFilter={query => this.loadUsers(query)}
+          onLoadMore={() => this.loadUsers(query, true)}
+          onSelect={item => this.setState({selected: item})}
+          selected={selected}
+          data={data}
+        />
+
+        <H1>{selected && selected.user.login}</H1>
       </div>
     );
   }
