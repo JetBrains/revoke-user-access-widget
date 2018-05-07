@@ -21,5 +21,6 @@
 }
 
 .banned-tag {
-  margin-left: calc(unit * 2);
+  margin-left: calc(unit);
+  font-weight: normal;
 }

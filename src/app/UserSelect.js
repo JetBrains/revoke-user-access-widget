@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select from '@jetbrains/ring-ui/components/select/select';
+import {MinWidth} from '@jetbrains/ring-ui/components/popup/position';
 
 class UserSelect extends Component {
   static propTypes = {
@@ -88,8 +89,8 @@ class UserSelect extends Component {
         onLoadMore={this.onLoadMore}
         onSelect={this.onSelect}
         selected={selectedItem}
-        minWidth={400}
-        // size={Select.Size.FULL}
+        size={Select.Size.FULL}
+        minWidth={MinWidth.TARGET}
         data={data}
       />
     );

@@ -5,11 +5,12 @@ import PropTypes from 'prop-types';
 import {render} from 'react-dom';
 import MultiTable from '@jetbrains/ring-ui/components/table/multitable';
 import Selection from '@jetbrains/ring-ui/components/table/selection';
-import Tag from '@jetbrains/ring-ui/components/tag/tag';
 import Panel from '@jetbrains/ring-ui/components/panel/panel';
 import Button from '@jetbrains/ring-ui/components/button/button';
+import '@jetbrains/ring-ui/components/form/form.scss';
 
 import UserSelect from './UserSelect';
+import UserProperties from './UserProperties';
 import GroupsTable from './GroupsTable';
 import TeamsTable from './TeamsTable';
 import ProjectRolesTable from './ProjectRolesTable';
@@ -95,22 +96,15 @@ class Widget extends Component {
 
     return (
       <div className={styles.widget}>
-        <div>
-          <UserSelect
-            fetchHub={this.props.dashboardApi.fetchHub}
-            selected={selectedUser}
-            onSelect={this.reloadUser}
-          />
-          {selectedUser && selectedUser.banned &&
-          <Tag
-            readOnly={true}
-            className={styles['banned-tag']}
-          >{'Banned'}</Tag>
-          }
-        </div>
+        <UserSelect
+          fetchHub={this.props.dashboardApi.fetchHub}
+          selected={selectedUser}
+          onSelect={this.reloadUser}
+        />
 
         {selectedUser &&
         <div className={styles['user-panel']}>
+          <UserProperties user={selectedUser}/>
           <MultiTable>
             <GroupsTable
               data={selectedUser.groups || []}
