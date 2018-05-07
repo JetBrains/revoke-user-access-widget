@@ -30,6 +30,7 @@ class Widget extends Component {
     this.state = {
       selectedUser: null,
       loadingUser: false,
+      revokingAccess: false,
       groupSelection: new Selection(),
       teamSelection: new Selection(),
       rolesSelection: new Selection(),
@@ -75,7 +76,11 @@ class Widget extends Component {
     });
     this.setState({
       selectedUser: detailedUser,
-      loadingUser: false
+      loadingUser: false,
+      groupSelection: new Selection({data: detailedUser.groups || []}),
+      teamSelection: new Selection({data: detailedUser.teams || []}),
+      rolesSelection: new Selection({data: detailedUser.projectRoles || []}),
+      loginSelection: new Selection({data: detailedUser.details || []})
     });
   };
 
@@ -128,14 +133,14 @@ class Widget extends Component {
       loginSelection
     } = this.state;
 
-    await Promise.all([...groupSelection.getSelected()].
-      map(group => this.removeFromGroup(group, selectedUser)));
-    await Promise.all([...teamSelection.getSelected()].
-      map(team => this.removeFromTeam(team, selectedUser)));
-    await Promise.all([...rolesSelection.getSelected()].
-      map(projectRole => this.revokeProjectRole(selectedUser, projectRole)));
-    await Promise.all([...loginSelection.getSelected()].
-      map(login => this.removeLogin(selectedUser, login)));
+    this.setState({revokingAccess: true});
+
+    await Promise.all([...groupSelection.getSelected()].map(group => this.removeFromGroup(group, selectedUser)));
+    await Promise.all([...teamSelection.getSelected()].map(team => this.removeFromTeam(team, selectedUser)));
+    await Promise.all([...rolesSelection.getSelected()].map(projectRole => this.revokeProjectRole(selectedUser, projectRole)));
+    await Promise.all([...loginSelection.getSelected()].map(login => this.removeLogin(selectedUser, login)));
+
+    this.setState({revokingAccess: false});
 
     return this.reloadUser(selectedUser);
   };
@@ -144,6 +149,7 @@ class Widget extends Component {
     const {
       selectedUser,
       loadingUser,
+      revokingAccess,
       groupSelection,
       teamSelection,
       rolesSelection,
@@ -195,6 +201,7 @@ class Widget extends Component {
           <Panel>
             <Button
               primary={true}
+              loader={revokingAccess}
               onClick={this.onRevokeAccess}
             >{'Revoke selected items'}</Button>
             <Button
