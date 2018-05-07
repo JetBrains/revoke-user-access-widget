@@ -77,18 +77,52 @@ class Widget extends Component {
     this.setState({selectedUser: null});
   };
 
+  async removeFromGroup(group, user) {
+    return this.props.dashboardApi.fetchHub(
+      `api/rest/usergroups/${group.id}/users/${user.id}`, {
+        method: 'DELETE'
+      });
+  }
+
+  async removeFromTeam(team, user) {
+    return this.props.dashboardApi.fetchHub(
+      `api/rest/projectteams/${team.id}/ownUsers/${user.id}`, {
+        method: 'DELETE'
+      });
+  }
+
+  async revokeProjectRole(user, projectRole) {
+    return this.props.dashboardApi.fetchHub(
+      `api/rest/users/${user.id}/projectroles/${projectRole.id}`, {
+        method: 'DELETE'
+      });
+  }
+
+  async removeLogin(user, login) {
+    return this.props.dashboardApi.fetchHub(
+      `api/rest/users/${user.id}/userdetails/${login.id}`, {
+        method: 'DELETE'
+      });
+  }
+
   onRevokeAccess = async () => {
     const {
-      selectedUser/*,
+      selectedUser,
       groupSelection,
       teamSelection,
       rolesSelection,
-      loginSelection*/
+      loginSelection
     } = this.state;
-    // groupSelection.getSelected().forEach(group => console.log('Remove group', group));
-    // teamSelection.getSelected().forEach(team => console.log('Remove team', team));
-    // rolesSelection.getSelected().forEach(projectRole => console.log('Remove project role', projectRole));
-    // loginSelection.getSelected().forEach(login => console.log('Remove login', login));
+
+    await Promise.all([...groupSelection.getSelected()].
+      map(group => this.removeFromGroup(group, selectedUser)));
+    await Promise.all([...teamSelection.getSelected()].
+      map(team => this.removeFromTeam(team, selectedUser)));
+    await Promise.all([...rolesSelection.getSelected()].
+      map(projectRole => this.revokeProjectRole(selectedUser, projectRole)));
+    await Promise.all([...loginSelection.getSelected()].
+      map(login => this.removeLogin(selectedUser, login)));
+
     return this.reloadUser(selectedUser);
   };
 

@@ -2,6 +2,7 @@ import 'babel-polyfill';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Tag from '@jetbrains/ring-ui/components/tag/tag';
+import Link from '@jetbrains/ring-ui/components/link/link';
 import '@jetbrains/ring-ui/components/form/form.scss';
 
 import styles from './app.css';
@@ -47,6 +48,11 @@ class UserProperties extends Component {
       value: email.email,
       tag: email.verified != null && (
         email.verified ? 'verified' : 'not verified'
+      )
+    }, {
+      name: 'Profile',
+      value: (
+        <Link href={`users/${user.id}`}>{'Full user account'}</Link>
       )
     }];
 
