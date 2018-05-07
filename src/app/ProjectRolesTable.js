@@ -6,36 +6,33 @@ import Link from '@jetbrains/ring-ui/components/link/link';
 class ProjectRolesTable extends Component {
   static propTypes = {
     ...Table.propTypes,
-    columns: PropTypes.array
+    columns: PropTypes.array,
+    hubURL: PropTypes.string
   };
-
-  static columns = [{
-    id: 'role',
-    title: 'Role',
-    getValue(projectRole) {
-      return (
-        <Link href={`roles/${projectRole.role.id}`} target="_blank">{projectRole.role.name}</Link>
-      );
-    }
-  }, {
-    id: 'project',
-    title: 'Project',
-    getValue(projectRole) {
-      return (projectRole.project &&
-        <Link href={`projects/${projectRole.project.id}`} target="_blank">{projectRole.project.name}</Link>
-      );
-    }
-  }];
 
   constructor(props) {
     super(props);
   }
 
+  columns = [{
+    id: 'role',
+    title: 'Role',
+    getValue: projectRole => (
+      <Link href={`${this.props.hubURL}/roles/${projectRole.role.id}`} target="_blank">{projectRole.role.name}</Link>
+    )
+  }, {
+    id: 'project',
+    title: 'Project',
+    getValue: projectRole => (projectRole.project &&
+      <Link href={`${this.props.hubURL}/projects-administration/${projectRole.project.id}?tab=access`} target="_blank">{projectRole.project.name}</Link>
+    )
+  }];
+
   renderTable() {
     return (
       <Table
         caption="Project Roles"
-        columns={ProjectRolesTable.columns}
+        columns={this.columns}
         {...this.props}
       />
     );

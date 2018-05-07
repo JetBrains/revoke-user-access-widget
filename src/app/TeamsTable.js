@@ -6,28 +6,27 @@ import Link from '@jetbrains/ring-ui/components/link/link';
 class TeamsTable extends Component {
   static propTypes = {
     ...Table.propTypes,
-    columns: PropTypes.array
+    columns: PropTypes.array,
+    hubURL: PropTypes.string
   };
-
-  static columns = [{
-    id: 'project',
-    title: 'Team',
-    getValue(team) {
-      return (team.project &&
-        <Link href={`projects/${team.project.id}`} target="_blank">{team.project.name}</Link>
-      );
-    }
-  }];
 
   constructor(props) {
     super(props);
   }
 
+  columns = [{
+    id: 'project',
+    title: 'Team',
+    getValue: team => (team.project &&
+      <Link href={`${this.props.hubURL}/projects-administration/${team.project.id}?tab=team`} target="_blank">{team.project.name}</Link>
+    )
+  }];
+
   renderTable() {
     return (
       <Table
         caption="Teams"
-        columns={TeamsTable.columns}
+        columns={this.columns}
         {...this.props}
       />
     );

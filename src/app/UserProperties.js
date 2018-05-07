@@ -9,7 +9,8 @@ import styles from './app.css';
 
 class UserProperties extends Component {
   static propTypes = {
-    user: PropTypes.object
+    user: PropTypes.object,
+    hubURL: PropTypes.string
   };
 
   static renderProperty(property) {
@@ -33,7 +34,7 @@ class UserProperties extends Component {
   }
 
   render() {
-    const {user} = this.props;
+    const {user, hubURL} = this.props;
     const email = (user.profile || {}).email || {};
 
     const properties = [{
@@ -52,7 +53,7 @@ class UserProperties extends Component {
     }, {
       name: 'Profile',
       value: (
-        <Link href={`users/${user.id}`}>{'Full user account'}</Link>
+        <Link href={`${hubURL}/users/${user.id}`}>{'Full user account'}</Link>
       )
     }];
 

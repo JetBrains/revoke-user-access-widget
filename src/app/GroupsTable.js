@@ -6,28 +6,27 @@ import Link from '@jetbrains/ring-ui/components/link/link';
 class GroupsTable extends Component {
   static propTypes = {
     ...Table.propTypes,
-    columns: PropTypes.array
+    columns: PropTypes.array,
+    hubURL: PropTypes.string
   };
-
-  static columns = [{
-    id: 'name',
-    title: 'Group',
-    getValue(group) {
-      return (
-        <Link href={`groups/${group.id}`} target="_blank">{group.name}</Link>
-      );
-    }
-  }];
 
   constructor(props) {
     super(props);
   }
 
+  columns = [{
+    id: 'name',
+    title: 'Group',
+    getValue: group => (
+      <Link href={`${this.props.hubURL}/groups/${group.id}`} target="_blank">{group.name}</Link>
+    )
+  }];
+
   renderTable() {
     return (
       <Table
         caption="Groups"
-        columns={GroupsTable.columns}
+        columns={this.columns}
         {...this.props}
       />
     );

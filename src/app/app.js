@@ -33,8 +33,22 @@ class Widget extends Component {
       groupSelection: new Selection(),
       teamSelection: new Selection(),
       rolesSelection: new Selection(),
-      loginSelection: new Selection()
+      loginSelection: new Selection(),
+      hubURL: ''
     };
+    this.loadHubService();
+  }
+
+  loadHubService() {
+    this.props.dashboardApi.fetchHub('api/rest/services/0-0-0-0-0', {
+      query: {
+        fields: 'homeUrl'
+      }
+    }).then(service => {
+      let hubURL = service.homeUrl;
+      hubURL = hubURL && hubURL.replace(/\/$/, '');
+      this.setState({hubURL});
+    });
   }
 
   reloadUser = async user => {
@@ -133,7 +147,8 @@ class Widget extends Component {
       groupSelection,
       teamSelection,
       rolesSelection,
-      loginSelection
+      loginSelection,
+      hubURL
     } = this.state;
 
     return (
@@ -146,23 +161,29 @@ class Widget extends Component {
 
         {selectedUser &&
         <div className={styles['user-panel']}>
-          <UserProperties user={selectedUser}/>
+          <UserProperties
+            user={selectedUser}
+            hubURL={hubURL}
+          />
           <MultiTable>
             <GroupsTable
               data={selectedUser.groups || []}
               loading={loadingUser}
               selection={groupSelection}
               onSelect={this.onGroupSelect}
+              hubURL={hubURL}
             />
             <TeamsTable
               data={selectedUser.teams || []}
               selection={teamSelection}
               onSelect={this.onTeamSelect}
+              hubURL={hubURL}
             />
             <ProjectRolesTable
               data={selectedUser.projectRoles || []}
               selection={rolesSelection}
               onSelect={this.onProjectRoleSelect}
+              hubURL={hubURL}
             />
             <LoginsTable
               data={selectedUser.details || []}
@@ -178,7 +199,7 @@ class Widget extends Component {
             >{'Revoke selected items'}</Button>
             <Button
               onClick={this.onCancel}
-            >{'Cancel'}</Button>
+            >{'Finish'}</Button>
           </Panel>
         </div>}
 

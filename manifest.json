@@ -1,9 +1,9 @@
 {
   "key": "revoke-user-access",
   "name": "Revoke User Access",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Widget helps to remove user from all groups and teams they is a member. It also helps to revoke user own project roles.",
-  "author": "Maxim Mazin <maxim.mazin@jetbrains.com>",
+  "author": "Maxim Mazin",
   "products": {
     "Hub": ">=2018.1",
     "YouTrack": ">=2018.1"
