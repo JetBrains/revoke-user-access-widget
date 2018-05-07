@@ -53,22 +53,35 @@ class UserSelect extends Component {
     });
   }
 
+  filter = {fn: () => true};
+
+  onOpen = () => this.loadData('');
+
+  onClose = () => this.setState({data: []});
+
+  onFilter = query => this.loadData(query);
+
+  onLoadMore = () => this.loadData(this.state.query, true);
+
+  onSelect = item => {
+    this.props.onSelect(item.user);
+    this.setState({selected: item});
+  };
+
   render() {
-    const {data, query, loadingUsers, selected} = this.state;
+    const {data, loadingUsers, selected} = this.state;
 
     return (
       <Select
+        label="Select user"
         multiple={false}
         loading={loadingUsers}
-        filter={{fn: () => true}}
-        onOpen={() => this.loadData('')}
-        onClose={() => this.setState({data: []})}
-        onFilter={query => this.loadData(query)}
-        onLoadMore={() => this.loadData(query, true)}
-        onSelect={item => {
-          this.props.onSelect(item.user);
-          return this.setState({selected: item});
-        }}
+        filter={this.filter}
+        onOpen={this.onOpen}
+        onClose={this.onClose}
+        onFilter={this.onFilter}
+        onLoadMore={this.onLoadMore}
+        onSelect={this.onSelect}
         selected={selected}
         data={data}
       />

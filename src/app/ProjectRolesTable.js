@@ -5,7 +5,7 @@ import Link from '@jetbrains/ring-ui/components/link/link';
 
 import Selection from '@jetbrains/ring-ui/components/table/selection';
 
-class TeamsTable extends Component {
+class ProjectRolesTable extends Component {
   static propTypes = {
     ...Table.propTypes,
     columns: PropTypes.array,
@@ -13,11 +13,19 @@ class TeamsTable extends Component {
   };
 
   static columns = [{
+    id: 'role',
+    title: 'Role',
+    getValue(projectRole) {
+      return (
+        <Link href={`roles/${projectRole.role.id}`} target="_blank">{projectRole.role.name}</Link>
+      );
+    }
+  }, {
     id: 'project',
-    title: 'Team',
-    getValue(team) {
-      return (team.project &&
-        <Link href={`projects/${team.project.id}`} target="_blank">{team.project.name}</Link>
+    title: 'Project',
+    getValue(projectRole) {
+      return (projectRole.project &&
+        <Link href={`projects/${projectRole.project.id}`} target="_blank">{projectRole.project.name}</Link>
       );
     }
   }];
@@ -36,8 +44,8 @@ class TeamsTable extends Component {
 
     return (
       <Table
-        caption="Teams"
-        columns={TeamsTable.columns}
+        caption="Project Roles"
+        columns={ProjectRolesTable.columns}
         selection={selection}
         onSelect={this.onSelect}
         {...this.props}
@@ -50,4 +58,4 @@ class TeamsTable extends Component {
   }
 }
 
-export default TeamsTable;
+export default ProjectRolesTable;

@@ -19,3 +19,7 @@
 .user-panel {
   margin-top: calc(unit * 2);
 }
+
+.banned-tag {
+  margin-left: calc(unit * 2);
+}

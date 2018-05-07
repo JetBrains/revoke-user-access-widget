@@ -1,18 +1,26 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
-import 'file-loader?name=[name].[ext]!../../manifest.json';
-import Selection from "@jetbrains/ring-ui/components/table/selection";
-import PropTypes from "prop-types"; // eslint-disable-line import/no-unresolved
+import Selection from '@jetbrains/ring-ui/components/table/selection';
 
 class GroupsTable extends Component {
   static propTypes = {
     ...Table.propTypes,
-    data: PropTypes.array,
     columns: PropTypes.array,
     selection: PropTypes.instanceOf(Selection)
   };
+
+  static columns = [{
+    id: 'name',
+    title: 'Group',
+    getValue(group) {
+      return (
+        <Link href={`groups/${group.id}`} target="_blank">{group.name}</Link>
+      );
+    }
+  }];
 
   constructor(props) {
     super(props);
@@ -21,33 +29,24 @@ class GroupsTable extends Component {
     };
   }
 
-  render() {
+  onSelect = selection => this.setState({selection});
+
+  renderTable() {
     const {selection} = this.state;
 
     return (
       <Table
-        columns={[{
-          id: 'name',
-          title: 'Group',
-          getValue(group) {
-            return (
-              <Link href={`groups/${group.id}`} target="_blank">{group.name}</Link>
-            );
-          }
-        }, {
-          id: 'project',
-          title: 'Project',
-          getValue(group) {
-            return (group.project &&
-              <Link href={`projects/${group.project.id}`} target="_blank">{group.project.name}</Link>
-            );
-          }
-        }]}
+        caption="Groups"
+        columns={GroupsTable.columns}
         selection={selection}
-        onSelect={selection => this.setState({selection})}
+        onSelect={this.onSelect}
         {...this.props}
       />
     );
+  }
+
+  render() {
+    return this.props.data.length ? this.renderTable() : '';
   }
 }
 
