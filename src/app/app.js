@@ -3,8 +3,13 @@ import DashboardAddons from 'hub-dashboard-addons';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {render} from 'react-dom';
-import Select from '@jetbrains/ring-ui/components/select/select';
-import {H1} from '@jetbrains/ring-ui/components/heading/heading';
+import Header, {H1} from '@jetbrains/ring-ui/components/heading/heading';
+import UserSelect from './UserSelect';
+import GroupsTable from './GroupsTable';
+import MultiTable from '@jetbrains/ring-ui/components/table/multitable';
+import Table from '@jetbrains/ring-ui/components/table/table';
+import Selection from '@jetbrains/ring-ui/components/table/selection';
+import Link from '@jetbrains/ring-ui/components/link/link';
 
 import 'file-loader?name=[name].[ext]!../../manifest.json'; // eslint-disable-line import/no-unresolved
 
@@ -16,71 +21,59 @@ class Widget extends Component {
 
   constructor(props) {
     super(props);
-    const {registerWidgetApi, dashboardApi} = props;
-
     this.state = {
-      data: []
+      selectedUser: null,
+      loadingUser: false,
+      groupSelection: new Selection()
     };
   }
 
-  async getUsers(query, skip) {
-    return this.props.dashboardApi.fetchHub(
-      'api/rest/users', {
+  async selectUser(user) {
+    this.setState({
+      selectedUser: user,
+      loadingUser: true,
+      groupSelection: new Selection()
+    });
+    const detailedUser = await this.props.dashboardApi.fetchHub(
+      `api/rest/users/${user.id}`, {
         query: {
-          query: query && `nameStartsWith: {${query}}`,
-          fields: 'id,login,name,profile(avatar,email(email)),total',
-          orderBy: 'login',
-          $skip: skip,
-          $top: 20
+          fields: 'id,login,name,banned,profile(avatar,email(email,verified)),' +
+          'groups(id,name,project(id,name)),' +
+          'teams(id,name),' +
+          'projectRoles(project(id,name),role(id,name)),' +
+          'details(id,authModuleName,lastAccessTime)'
         }
-      }
-    );
-  }
-
-  async loadUsers(query, loadMore = false) {
-    const {data: oldData} = this.state;
+      });
     this.setState({
-      loadingUsers: true,
-      query
+      selectedUser: detailedUser,
+      loadingUser: false
     });
-    const userPage = await this.getUsers(query, loadMore ? oldData.length : 0);
-    const newData = userPage.users.map(user => ({
-      key: user.id,
-      label: `${user.name} (${user.login})`,
-      description: ((user.profile || {}).email || {}).email,
-      icon: user.profile.avatar.url,
-      user
-    }));
-    this.setState({
-      loadingUsers: false,
-      data: loadMore ? oldData.concat(newData) : newData
-    });
-  }
-
-  selectUser(user) {
-    this.setState({selectedUser: user})
   }
 
   render() {
-    const {data, query, loadingUsers, selected} = this.state;
+    const {selectedUser, loadingUser, groupSelection} = this.state;
 
     return (
       <div>
-        <H1>Select User to Wipe</H1>
-        <Select
-          multiple={false}
-          loading={loadingUsers}
-          filter={{fn: () => true}}
-          onOpen={() => this.loadUsers('')}
-          onClose={() => this.setState({data: []})}
-          onFilter={query => this.loadUsers(query)}
-          onLoadMore={() => this.loadUsers(query, true)}
-          onSelect={item => this.setState({selected: item})}
-          selected={selected}
-          data={data}
-        />
+        <Header>Select User to Wipe</Header>
+        <div>
+          <UserSelect
+            fetchHub={this.props.dashboardApi.fetchHub}
+            onSelect={this.selectUser.bind(this)}
+          />
+        </div>
 
-        <H1>{selected && selected.user.login}</H1>
+        {selectedUser &&
+        <div>
+          <Header><Link href={`users/${selectedUser.id}`}>{selectedUser.name}</Link></Header>
+          <MultiTable>
+            <GroupsTable
+              data={selectedUser.groups || []}
+              loading={loadingUser}
+            />
+          </MultiTable>
+        </div>}
+
       </div>
     );
   }
