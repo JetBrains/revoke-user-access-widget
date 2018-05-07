@@ -83,6 +83,7 @@ class UserSelect extends Component {
         onLoadMore={this.onLoadMore}
         onSelect={this.onSelect}
         selected={selected}
+        minWidth={400}
         data={data}
       />
     );
