@@ -6,12 +6,13 @@ import {render} from 'react-dom';
 import Header, {H1} from '@jetbrains/ring-ui/components/heading/heading';
 import UserSelect from './UserSelect';
 import GroupsTable from './GroupsTable';
+import TeamsTable from './TeamsTable';
 import MultiTable from '@jetbrains/ring-ui/components/table/multitable';
-import Table from '@jetbrains/ring-ui/components/table/table';
 import Selection from '@jetbrains/ring-ui/components/table/selection';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
 import 'file-loader?name=[name].[ext]!../../manifest.json'; // eslint-disable-line import/no-unresolved
+import styles from './app.css';
 
 class Widget extends Component {
   static propTypes = {
@@ -39,7 +40,7 @@ class Widget extends Component {
         query: {
           fields: 'id,login,name,banned,profile(avatar,email(email,verified)),' +
           'groups(id,name,project(id,name)),' +
-          'teams(id,name),' +
+          'teams(id,project(id,name)),' +
           'projectRoles(project(id,name),role(id,name)),' +
           'details(id,authModuleName,lastAccessTime)'
         }
@@ -54,7 +55,7 @@ class Widget extends Component {
     const {selectedUser, loadingUser, groupSelection} = this.state;
 
     return (
-      <div>
+      <div className={styles.widget}>
         <Header>Select User to Wipe</Header>
         <div>
           <UserSelect
@@ -64,11 +65,15 @@ class Widget extends Component {
         </div>
 
         {selectedUser &&
-        <div>
+        <div className={styles["user-panel"]}>
           <Header><Link href={`users/${selectedUser.id}`}>{selectedUser.name}</Link></Header>
           <MultiTable>
             <GroupsTable
               data={selectedUser.groups || []}
+              loading={loadingUser}
+            />
+            <TeamsTable
+              data={selectedUser.teams || []}
               loading={loadingUser}
             />
           </MultiTable>

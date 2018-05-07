@@ -6,7 +6,7 @@ import 'file-loader?name=[name].[ext]!../../manifest.json';
 import Selection from "@jetbrains/ring-ui/components/table/selection";
 import PropTypes from "prop-types"; // eslint-disable-line import/no-unresolved
 
-class GroupsTable extends Component {
+class TeamsTable extends Component {
   static propTypes = {
     ...Table.propTypes,
     data: PropTypes.array,
@@ -27,19 +27,11 @@ class GroupsTable extends Component {
     return (
       <Table
         columns={[{
-          id: 'name',
-          title: 'Group',
-          getValue(group) {
-            return (
-              <Link href={`groups/${group.id}`} target="_blank">{group.name}</Link>
-            );
-          }
-        }, {
           id: 'project',
-          title: 'Project',
-          getValue(group) {
-            return (group.project &&
-              <Link href={`projects/${group.project.id}`} target="_blank">{group.project.name}</Link>
+          title: 'Team',
+          getValue(team) {
+            return (team.project &&
+              <Link href={`projects/${team.project.id}`} target="_blank">{team.project.name}</Link>
             );
           }
         }]}
@@ -51,4 +43,4 @@ class GroupsTable extends Component {
   }
 }
 
-export default GroupsTable;
+export default TeamsTable;
