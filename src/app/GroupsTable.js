@@ -16,12 +16,14 @@ class GroupsTable extends Component {
 
   constructor(props) {
     super(props);
-    this.setState({
+    this.state = {
       selection: new Selection()
-    });
+    };
   }
 
   render() {
+    const {selection} = this.state;
+
     return (
       <Table
         caption="Groups"
@@ -42,9 +44,8 @@ class GroupsTable extends Component {
             );
           }
         }]}
-        onSelect={selection => this.selection = selection}
-        selection={this.selection}
-        // onSelect={selection => this.setState({groupSelection: selection})}
+        selection={selection}
+        onSelect={selection => this.setState({selection})}
         {...this.props}
       />
     );
