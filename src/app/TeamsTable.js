@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
-import Selection from '@jetbrains/ring-ui/components/table/selection';
-
 class TeamsTable extends Component {
   static propTypes = {
     ...Table.propTypes,
-    columns: PropTypes.array,
-    selection: PropTypes.instanceOf(Selection)
+    columns: PropTypes.array
   };
 
   static columns = [{
@@ -24,22 +21,13 @@ class TeamsTable extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      selection: new Selection()
-    };
   }
 
-  onSelect = selection => this.setState({selection});
-
   renderTable() {
-    const {selection} = this.state;
-
     return (
       <Table
         caption="Teams"
         columns={TeamsTable.columns}
-        selection={selection}
-        onSelect={this.onSelect}
         {...this.props}
       />
     );

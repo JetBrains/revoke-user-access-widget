@@ -5,8 +5,19 @@ import Select from '@jetbrains/ring-ui/components/select/select';
 class UserSelect extends Component {
   static propTypes = {
     fetchHub: PropTypes.func,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    selected: PropTypes.object
   };
+
+  static user2item(user) {
+    return {
+      key: user.id,
+      label: `${user.name} (${user.login})`,
+      description: ((user.profile || {}).email || {}).email,
+      icon: user.profile.avatar.url,
+      user
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -14,8 +25,7 @@ class UserSelect extends Component {
     this.state = {
       data: [],
       loadingUsers: false,
-      query: '',
-      selected: null
+      query: ''
     };
   }
 
@@ -40,13 +50,7 @@ class UserSelect extends Component {
       query
     });
     const userPage = await this.getUsers(query, loadMore ? oldData.length : 0);
-    const newData = userPage.users.map(user => ({
-      key: user.id,
-      label: `${user.name} (${user.login})`,
-      description: ((user.profile || {}).email || {}).email,
-      icon: user.profile.avatar.url,
-      user
-    }));
+    const newData = userPage.users.map(UserSelect.user2item);
     this.setState({
       loadingUsers: false,
       data: loadMore ? oldData.concat(newData) : newData
@@ -65,11 +69,12 @@ class UserSelect extends Component {
 
   onSelect = item => {
     this.props.onSelect(item.user);
-    this.setState({selected: item});
   };
 
   render() {
-    const {data, loadingUsers, selected} = this.state;
+    const {data, loadingUsers} = this.state;
+    const {selected} = this.props;
+    const selectedItem = selected && UserSelect.user2item(selected);
 
     return (
       <Select
@@ -82,8 +87,9 @@ class UserSelect extends Component {
         onFilter={this.onFilter}
         onLoadMore={this.onLoadMore}
         onSelect={this.onSelect}
-        selected={selected}
+        selected={selectedItem}
         minWidth={400}
+        // size={Select.Size.FULL}
         data={data}
       />
     );

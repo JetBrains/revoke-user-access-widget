@@ -6,6 +6,8 @@ import {render} from 'react-dom';
 import MultiTable from '@jetbrains/ring-ui/components/table/multitable';
 import Selection from '@jetbrains/ring-ui/components/table/selection';
 import Tag from '@jetbrains/ring-ui/components/tag/tag';
+import Panel from '@jetbrains/ring-ui/components/panel/panel';
+import Button from '@jetbrains/ring-ui/components/button/button';
 
 import UserSelect from './UserSelect';
 import GroupsTable from './GroupsTable';
@@ -26,15 +28,19 @@ class Widget extends Component {
     this.state = {
       selectedUser: null,
       loadingUser: false,
-      groupSelection: new Selection()
+      groupSelection: new Selection(),
+      teamSelection: new Selection(),
+      rolesSelection: new Selection()
     };
   }
 
-  onUserSelect = async user => {
+  reloadUser = async user => {
     this.setState({
       selectedUser: user,
       loadingUser: true,
-      groupSelection: new Selection()
+      groupSelection: new Selection(),
+      teamSelection: new Selection(),
+      rolesSelection: new Selection()
     });
     const detailedUser = await this.props.dashboardApi.fetchHub(
       `api/rest/users/${user.id}`, {
@@ -55,15 +61,45 @@ class Widget extends Component {
     });
   };
 
+  onGroupSelect = selection => this.setState({groupSelection: selection});
+
+  onTeamSelect = selection => this.setState({teamSelection: selection});
+
+  onProjectRoleSelect = selection => this.setState({rolesSelection: selection});
+
+  onCancel = () => {
+    this.setState({selectedUser: null});
+  };
+
+  onRevokeAccess = async () => {
+    const {
+      selectedUser/*,
+      groupSelection,
+      teamSelection,
+      rolesSelection*/
+    } = this.state;
+    // groupSelection.getSelected().forEach(group => console.log('Remove group', group));
+    // teamSelection.getSelected().forEach(team => console.log('Remove team', team));
+    // rolesSelection.getSelected().forEach(projectRole => console.log('Remove project role', projectRole));
+    return this.reloadUser(selectedUser);
+  };
+
   render() {
-    const {selectedUser, loadingUser} = this.state;
+    const {
+      selectedUser,
+      loadingUser,
+      groupSelection,
+      teamSelection,
+      rolesSelection
+    } = this.state;
 
     return (
       <div className={styles.widget}>
         <div>
           <UserSelect
             fetchHub={this.props.dashboardApi.fetchHub}
-            onSelect={this.onUserSelect}
+            selected={selectedUser}
+            onSelect={this.reloadUser}
           />
           {selectedUser && selectedUser.banned &&
           <Tag
@@ -79,14 +115,30 @@ class Widget extends Component {
             <GroupsTable
               data={selectedUser.groups || []}
               loading={loadingUser}
+              selection={groupSelection}
+              onSelect={this.onGroupSelect}
             />
             <TeamsTable
               data={selectedUser.teams || []}
+              selection={teamSelection}
+              onSelect={this.onTeamSelect}
             />
             <ProjectRolesTable
               data={selectedUser.projectRoles || []}
+              selection={rolesSelection}
+              onSelect={this.onProjectRoleSelect}
             />
           </MultiTable>
+
+          <Panel>
+            <Button
+              primary={true}
+              onClick={this.onRevokeAccess}
+            >{'Revoke selected items'}</Button>
+            <Button
+              onClick={this.onCancel}
+            >{'Cancel'}</Button>
+          </Panel>
         </div>}
 
       </div>
