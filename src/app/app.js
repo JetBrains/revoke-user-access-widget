@@ -14,6 +14,7 @@ import UserProperties from './UserProperties';
 import GroupsTable from './GroupsTable';
 import TeamsTable from './TeamsTable';
 import ProjectRolesTable from './ProjectRolesTable';
+import LoginsTable from './LoginsTable';
 
 import 'file-loader?name=[name].[ext]!../../manifest.json'; // eslint-disable-line import/no-unresolved
 import styles from './app.css';
@@ -31,7 +32,8 @@ class Widget extends Component {
       loadingUser: false,
       groupSelection: new Selection(),
       teamSelection: new Selection(),
-      rolesSelection: new Selection()
+      rolesSelection: new Selection(),
+      loginSelection: new Selection()
     };
   }
 
@@ -41,7 +43,8 @@ class Widget extends Component {
       loadingUser: true,
       groupSelection: new Selection(),
       teamSelection: new Selection(),
-      rolesSelection: new Selection()
+      rolesSelection: new Selection(),
+      loginSelection: new Selection()
     });
     const detailedUser = await this.props.dashboardApi.fetchHub(
       `api/rest/users/${user.id}`, {
@@ -50,7 +53,7 @@ class Widget extends Component {
           'groups(id,name),' +
           'teams(id,project(id,name)),' +
           'projectRoles(id,project(id,name),role(id,name)),' +
-          'details(id,authModuleName,lastAccessTime)'
+          'details(id,authModuleName,lastAccessTime,login,email,userid,commonName,nameId,fullName)'
         }
       });
     (detailedUser.projectRoles || []).forEach(projectRole => {
@@ -68,6 +71,8 @@ class Widget extends Component {
 
   onProjectRoleSelect = selection => this.setState({rolesSelection: selection});
 
+  onLoginSelect = selection => this.setState({loginSelection: selection});
+
   onCancel = () => {
     this.setState({selectedUser: null});
   };
@@ -77,11 +82,13 @@ class Widget extends Component {
       selectedUser/*,
       groupSelection,
       teamSelection,
-      rolesSelection*/
+      rolesSelection,
+      loginSelection*/
     } = this.state;
     // groupSelection.getSelected().forEach(group => console.log('Remove group', group));
     // teamSelection.getSelected().forEach(team => console.log('Remove team', team));
     // rolesSelection.getSelected().forEach(projectRole => console.log('Remove project role', projectRole));
+    // loginSelection.getSelected().forEach(login => console.log('Remove login', login));
     return this.reloadUser(selectedUser);
   };
 
@@ -91,7 +98,8 @@ class Widget extends Component {
       loadingUser,
       groupSelection,
       teamSelection,
-      rolesSelection
+      rolesSelection,
+      loginSelection
     } = this.state;
 
     return (
@@ -121,6 +129,11 @@ class Widget extends Component {
               data={selectedUser.projectRoles || []}
               selection={rolesSelection}
               onSelect={this.onProjectRoleSelect}
+            />
+            <LoginsTable
+              data={selectedUser.details || []}
+              selection={loginSelection}
+              onSelect={this.onLoginSelect}
             />
           </MultiTable>
 
