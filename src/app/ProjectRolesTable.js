@@ -1,46 +1,39 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import {connect} from 'react-redux';
 import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
-class ProjectRolesTable extends Component {
-  static propTypes = {
-    ...Table.propTypes,
-    columns: PropTypes.array,
-    hubURL: PropTypes.string
-  };
+import {selectRoles} from './ReduxStore';
 
-  constructor(props) {
-    super(props);
-  }
+const columns = (hubURL) => [{
+  id: 'role',
+  title: 'Project Roles',
+  getValue: projectRole => (projectRole.role &&
+    <Link
+      href={`${hubURL}/roles/${projectRole.role.id}`}
+      target="_blank"
+    >{projectRole.role.name}</Link>
+  )
+}, {
+  id: 'project',
+  title: 'Project',
+  getValue: projectRole => (projectRole.project &&
+    <Link
+      href={`${hubURL}/projects-administration/${projectRole.project.id}?tab=access`}
+      target="_blank"
+    >{projectRole.project.name}</Link>
+  )
+}];
 
-  columns = [{
-    id: 'role',
-    title: 'Role',
-    getValue: projectRole => (
-      <Link href={`${this.props.hubURL}/roles/${projectRole.role.id}`} target="_blank">{projectRole.role.name}</Link>
-    )
-  }, {
-    id: 'project',
-    title: 'Project',
-    getValue: projectRole => (projectRole.project &&
-      <Link href={`${this.props.hubURL}/projects-administration/${projectRole.project.id}?tab=access`} target="_blank">{projectRole.project.name}</Link>
-    )
-  }];
-
-  renderTable() {
-    return (
-      <Table
-        caption="Project Roles"
-        columns={this.columns}
-        {...this.props}
-      />
-    );
-  }
-
-  render() {
-    return this.props.data.length ? this.renderTable() : '';
-  }
-}
+const ProjectRolesTable = connect(
+  state => ({
+    columns: columns(state.hubURL),
+    data: state.selectedUser.projectRoles || [],
+    selection: state.roleSelection
+  }),
+  dispatch => ({
+    onSelect: selection => dispatch(selectRoles(selection))
+  })
+)(Table);
 
 export default ProjectRolesTable;

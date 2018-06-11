@@ -20,6 +20,14 @@
   margin-top: calc(unit * 2);
 }
 
+.property-form {
+  margin-left: calc(unit * 4);
+}
+
+.property-table {
+  margin-top: calc(unit * 2);
+}
+
 .banned-tag {
   margin-left: calc(unit);
   font-weight: normal;

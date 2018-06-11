@@ -1,46 +1,33 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import Table from '@jetbrains/ring-ui/components/table/table';
 
-class LoginsTable extends Component {
-  static propTypes = {
-    ...Table.propTypes,
-    columns: PropTypes.array
-  };
+import {selectLogins} from './ReduxStore';
 
-  static columns = [{
-    id: 'authModuleName',
-    title: 'Auth Module'
-  }, {
-    id: 'login',
-    getValue(userDetail) {
-      return userDetail.login ||
-        userDetail.userid ||
-        userDetail.commonName ||
-        userDetail.nameId ||
-        (userDetail.email || {}).email;
-    }
-  }, {
-    id: 'fullName'
-  }];
 
-  constructor(props) {
-    super(props);
+const columns = [{
+  id: 'login',
+  title: 'Logins',
+  getValue(userDetail) {
+    return userDetail.login ||
+      userDetail.userid ||
+      userDetail.commonName ||
+      userDetail.nameId ||
+      (userDetail.email || {}).email;
   }
+}, {
+  title: 'Auth Module',
+  id: 'authModuleName'
+}];
 
-  renderTable() {
-    return (
-      <Table
-        caption="Logins"
-        columns={LoginsTable.columns}
-        {...this.props}
-      />
-    );
-  }
-
-  render() {
-    return this.props.data.length ? this.renderTable() : '';
-  }
-}
+const LoginsTable = connect(
+  state => ({
+    columns,
+    data: state.selectedUser.details || [],
+    selection: state.loginSelection
+  }),
+  dispatch => ({
+    onSelect: selection => dispatch(selectLogins(selection))
+  })
+)(Table);
 
 export default LoginsTable;

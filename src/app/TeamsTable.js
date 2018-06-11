@@ -1,40 +1,30 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import {connect} from 'react-redux';
 import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
-class TeamsTable extends Component {
-  static propTypes = {
-    ...Table.propTypes,
-    columns: PropTypes.array,
-    hubURL: PropTypes.string
-  };
+import {selectTeams} from './ReduxStore';
 
-  constructor(props) {
-    super(props);
-  }
+const columns = hubURL => [{
+  id: 'project',
+  title: 'Teams',
+  getValue: team => (team.project &&
+    <Link
+      href={`${hubURL}/projects-administration/${team.project.id}?tab=team`}
+      target="_blank"
+    >{team.project.name}</Link>
+  )
+}];
 
-  columns = [{
-    id: 'project',
-    title: 'Team',
-    getValue: team => (team.project &&
-      <Link href={`${this.props.hubURL}/projects-administration/${team.project.id}?tab=team`} target="_blank">{team.project.name}</Link>
-    )
-  }];
-
-  renderTable() {
-    return (
-      <Table
-        caption="Teams"
-        columns={this.columns}
-        {...this.props}
-      />
-    );
-  }
-
-  render() {
-    return this.props.data.length ? this.renderTable() : '';
-  }
-}
+const TeamsTable = connect(
+  state => ({
+    columns: columns(state.hubURL),
+    data: state.selectedUser.teams || [],
+    selection: state.teamSelection
+  }),
+  dispatch => ({
+    onSelect: selection => dispatch(selectTeams(selection))
+  })
+)(Table);
 
 export default TeamsTable;

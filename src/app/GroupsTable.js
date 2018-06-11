@@ -1,40 +1,28 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import {connect} from 'react-redux';
 import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
-class GroupsTable extends Component {
-  static propTypes = {
-    ...Table.propTypes,
-    columns: PropTypes.array,
-    hubURL: PropTypes.string
-  };
+import {selectGroups} from './ReduxStore';
 
-  constructor(props) {
-    super(props);
-  }
+const columns = hubURL => [{
+  id: 'name',
+  title: 'Groups',
+  getValue: group => (
+    <Link href={`${hubURL}/groups/${group.id}`} target="_blank">{group.name}</Link>
+  )
+}];
 
-  columns = [{
-    id: 'name',
-    title: 'Group',
-    getValue: group => (
-      <Link href={`${this.props.hubURL}/groups/${group.id}`} target="_blank">{group.name}</Link>
-    )
-  }];
-
-  renderTable() {
-    return (
-      <Table
-        caption="Groups"
-        columns={this.columns}
-        {...this.props}
-      />
-    );
-  }
-
-  render() {
-    return this.props.data.length ? this.renderTable() : '';
-  }
-}
+const GroupsTable = connect(
+  state => ({
+    columns: columns(state.hubURL),
+    data: state.selectedUser.groups || [],
+    loading: state.loadingUser,
+    selection: state.groupSelection
+  }),
+  dispatch => ({
+    onSelect: selection => dispatch(selectGroups(selection))
+  })
+)(Table);
 
 export default GroupsTable;
