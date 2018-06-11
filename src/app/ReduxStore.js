@@ -23,6 +23,15 @@ export const finishRevocation = createAction();
 
 export const cancel = createAction();
 
+const select = (data, filter) => new Selection({
+  data: data || [],
+  selected: data && new Set(data.filter(filter))
+});
+
+const exceptRegisterUsers = group => group.name !== 'Registered Users';
+const all = () => true;
+const none = () => false;
+
 const reducer = createReducer(
   {
     [setHubURL]: (state, hubURL) => ({
@@ -44,10 +53,10 @@ const reducer = createReducer(
       selectedUser,
       loadingUserDetails: false,
 
-      groupSelection: new Selection({data: selectedUser.groups || []}),
-      teamSelection: new Selection({data: selectedUser.teams || []}),
-      roleSelection: new Selection({data: selectedUser.projectRoles || []}),
-      loginSelection: new Selection({data: selectedUser.details || []})
+      groupSelection: select(selectedUser.groups, exceptRegisterUsers),
+      teamSelection: select(selectedUser.teams, all),
+      roleSelection: select(selectedUser.projectRoles, all),
+      loginSelection: select(selectedUser.details, none)
     }),
     [requestUsers]: (state, userQuery) => ({
       ...state,
