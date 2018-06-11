@@ -4,10 +4,13 @@ import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
 import {selectGroups} from './ReduxStore';
+import styles from './app.css';
 
 const columns = hubURL => [{
   id: 'name',
   title: 'Groups',
+  className: styles.tableFirstColumn,
+  headerClassName: styles.tableFirstColumn,
   getValue: function renderGroupLink(group) {
     return <Link href={`${hubURL}/groups/${group.id}`} target="_blank">{group.name}</Link>;
   }

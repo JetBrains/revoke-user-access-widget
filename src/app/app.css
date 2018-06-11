@@ -37,11 +37,6 @@
   margin-top: calc(unit * 2);
 }
 
-.banned-tag {
-  margin-left: calc(unit);
-  font-weight: normal;
-}
-
 .loadMoreButton {
   text-align: center;
 
@@ -109,3 +104,6 @@
   padding: calc(unit * 2) unit;
 }
 
+.tableFirstColumn {
+  padding-left: 8px !important;
+}

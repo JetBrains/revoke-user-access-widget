@@ -4,10 +4,13 @@ import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
 import {selectRoles} from './ReduxStore';
+import styles from './app.css';
 
 const columns = hubURL => [{
   id: 'role',
   title: 'Project Roles',
+  className: styles.tableFirstColumn,
+  headerClassName: styles.tableFirstColumn,
   getValue: projectRole => (projectRole.role &&
     <Link
       href={`${hubURL}/roles/${projectRole.role.id}`}

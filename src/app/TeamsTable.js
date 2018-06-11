@@ -4,10 +4,13 @@ import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
 import {selectTeams} from './ReduxStore';
+import styles from './app.css';
 
 const columns = hubURL => [{
   id: 'project',
   title: 'Teams',
+  className: styles.tableFirstColumn,
+  headerClassName: styles.tableFirstColumn,
   getValue: team => (team.project &&
     <Link
       href={`${hubURL}/projects-administration/${team.project.id}?tab=team`}
