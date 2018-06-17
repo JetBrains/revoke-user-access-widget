@@ -42,21 +42,23 @@ const Widget = (
     {selectedUser && (
       <div className={styles['user-panel']}>
         <UserPropertiesContainer/>
-        <MultiTable>
-          <Optional data={selectedUser.groups}>
-            <GroupsTable/>
-          </Optional>
-          <Optional data={selectedUser.teams}>
-            <TeamsTable/>
-          </Optional>
-          <Optional data={selectedUser.projectRoles}>
-            <ProjectRolesTable/>
-          </Optional>
-          <Optional data={selectedUser.details}>
-            <LoginsTable/>
-          </Optional>
-        </MultiTable>
-        <Panel>
+        <div className={styles.userMultiTable}>
+          <MultiTable>
+            <Optional data={selectedUser.groups}>
+              <GroupsTable/>
+            </Optional>
+            <Optional data={selectedUser.teams}>
+              <TeamsTable/>
+            </Optional>
+            <Optional data={selectedUser.projectRoles}>
+              <ProjectRolesTable/>
+            </Optional>
+            <Optional data={selectedUser.details}>
+              <LoginsTable/>
+            </Optional>
+          </MultiTable>
+        </div>
+        <Panel className={styles.widgetFooter}>
           <Button
             primary={true}
             loader={revokingAccess}
