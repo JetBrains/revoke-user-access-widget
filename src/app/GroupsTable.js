@@ -8,9 +8,9 @@ import {selectGroups} from './ReduxStore';
 const columns = hubURL => [{
   id: 'name',
   title: 'Groups',
-  getValue: group => (
-    <Link href={`${hubURL}/groups/${group.id}`} target="_blank">{group.name}</Link>
-  )
+  getValue: function renderGroupLink(group) {
+    return <Link href={`${hubURL}/groups/${group.id}`} target="_blank">{group.name}</Link>;
+  }
 }];
 
 const GroupsTable = connect(

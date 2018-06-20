@@ -5,7 +5,7 @@ import Link from '@jetbrains/ring-ui/components/link/link';
 
 import {selectRoles} from './ReduxStore';
 
-const columns = (hubURL) => [{
+const columns = hubURL => [{
   id: 'role',
   title: 'Project Roles',
   getValue: projectRole => (projectRole.role &&
