@@ -1,4 +1,4 @@
-@value unit, font, font-size from "@jetbrains/ring-ui/components/global/global.css";
+@value unit, font, font-size, font-size-smaller, borders-color, border-hover-color from "@jetbrains/ring-ui/components/global/global.css";
 
 :global(.widget-body) {
   margin: 0;
@@ -16,7 +16,7 @@
   padding: 0;
 }
 
-.widgetFooter {
+.widgetFooter.widgetFooter {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -44,4 +44,44 @@
 .banned-tag {
   margin-left: calc(unit);
   font-weight: normal;
+}
+
+.loadMoreButton {
+  text-align: center;
+
+  border: 1px dashed borders-color;
+  border-radius: 3px;
+
+  font-size: font-size-smaller;
+}
+
+.loadMoreButton {
+  text-align: center;
+
+  border: 1px dashed borders-color;
+  border-radius: 3px;
+
+  font-size: font-size-smaller;
+}
+
+.loadMoreButton:hover {
+  border-color: border-hover-color;
+}
+
+.searchUserPanel {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  padding: 12px calc(2 * unit) unit calc(2 * unit);
+
+  background-color: white;
+
+  box-shadow: 0 6px 9px -9px borders-color;
+}
+
+.searchUserList {
+  margin-top: calc(3 * unit);
 }
