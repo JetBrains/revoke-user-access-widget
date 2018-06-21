@@ -64,19 +64,21 @@ const reducer = createReducer(
       userQuery,
       users: []
     }),
-    [setUsers]: (state, users) => ({
+    [setUsers]: (state, {users, canLoadMoreUsers}) => ({
       ...state,
       loadingUsers: false,
-      users
+      users,
+      canLoadMoreUsers
     }),
     [requestMoreUsers]: state => ({
       ...state,
       loadingUsers: true
     }),
-    [setMoreUsers]: (state, users) => ({
+    [setMoreUsers]: (state, {users, canLoadMoreUsers}) => ({
       ...state,
       loadingUsers: false,
-      users: [...state.users, ...users]
+      users: [...state.users, ...users],
+      canLoadMoreUsers
     }),
     [selectGroups]: (state, groupSelection) => ({
       ...state,
@@ -116,6 +118,7 @@ const reducer = createReducer(
     loadingUsers: false,
     userQuery: '',
     users: [],
+    canLoadMoreUsers: false,
 
     groupSelection: new Selection(),
     teamSelection: new Selection(),

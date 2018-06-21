@@ -23,7 +23,7 @@
     "@jetbrains/babel-preset-jetbrains": "1.1.0",
     "@jetbrains/icons": "1.16.2",
     "@jetbrains/logos": "1.0.0",
-    "@jetbrains/ring-ui": "^1.0.0-beta.97",
+    "@jetbrains/ring-ui": "^1.0.0-beta.132",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
     "babel-polyfill": "6.26.0",

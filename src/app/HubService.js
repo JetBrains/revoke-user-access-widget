@@ -24,7 +24,7 @@ class HubService {
     return this.fetchHub(
       'api/rest/users', {
         query: {
-          query: query && `nameStartsWith: {${query}}`,
+          query,
           fields: 'id,login,name,profile(avatar,email(email)),total',
           orderBy: 'login',
           $skip: skip,
@@ -45,6 +45,18 @@ class HubService {
             'details(id,authModuleName,lastAccessTime,login,email,userid,commonName,nameId,fullName)'
         }
       });
+  }
+
+  async usersQueryAssistSource(args) {
+    return this.fetchHub(
+      'api/rest/users/queryAssist',
+      {
+        query: {
+          ...args,
+          fields: `query,caret,styleRanges${args.omitSuggestions ? '' : ',suggestions'}`
+        }
+      }
+    );
   }
 
   async removeFromGroup(group, user) {
