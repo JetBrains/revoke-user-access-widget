@@ -1,50 +1,78 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Badge from '@jetbrains/ring-ui/components/badge/badge';
-import Island from '@jetbrains/ring-ui/components/island/island';
-import {UserCard} from '@jetbrains/ring-ui/components/user-card/user-card';
+import Link from '@jetbrains/ring-ui/components/link/link';
+import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
+import Avatar, {Size} from '@jetbrains/ring-ui/components/avatar/avatar';
 
+import UserSelect from './UserSelect';
 import styles from './app.css';
 
 
-const UserProperties = ({user, hubURL}) => {
-  const email = (user.profile || {}).email || {};
-
-  const userCardModel = {
-    login: user.login,
-    name: user.name,
-    email: email.email,
-    avatarUrl: user.profile.avatar.url,
-    href: `${hubURL}/users/${user.id}`,
-    banned: user.banned,
-    online: user.banned,
-    banReason: user.banReason
-  };
+const UserProperties = ({user, hubURL, onUserSelect, hubService}) => {
+  const email = ((user.profile || {}).email || {});
 
   return (
-    <Island className={styles.userInfoContainer}>
-      <UserCard
-        className={styles.userInfo}
-        user={userCardModel}
-      >
+    <div className={styles.userInfo}>
+      <Avatar
+        className={styles.userInfoAvatar}
+        onClick={openUserProfile}
+        size={Size.Size56}
+        url={user.profile.avatar.url}
+      />
+      <div className={styles.userInfoContent}>
+        <div className={styles.userNameLine}>
+          <UserSelect
+            onUserSelect={onUserSelect}
+            hubService={hubService}
+          />
+          {
+            user.banned &&
+            (
+              <Tooltip title={user.banReason}>
+                <Badge
+                  className={styles.userTag}
+                  invalid={true}
+                >{'banned'}</Badge>
+              </Tooltip>
+            )
+          }
+        </div>
+        <div>
+          <Link pseudo={true} onClick={openUserProfile}>
+            {user.login}
+          </Link>
+        </div>
         {
-          email.verified != null &&
-          <Badge
-            valid={email.verified}
-            className={styles.userTag}
-          >
-            {email.verified ? 'email verified' : 'email not verified'}
-          </Badge>
+          email.email &&
+          <div>
+            <span>{email.email}</span>
+            {
+              email.verified !== null &&
+              <Badge
+                valid={email.verified}
+                className={styles.userTag}
+              >
+                {email.verified ? 'email verified' : 'email not verified'}
+              </Badge>
+            }
+          </div>
         }
-      </UserCard>
-    </Island>
+      </div>
+    </div>
   );
+
+  function openUserProfile() {
+    window.open(`${hubURL}/users/${user.id}`, '_blank');
+  }
 };
 
 
 UserProperties.propTypes = {
   user: PropTypes.object.isRequired,
-  hubURL: PropTypes.string
+  hubURL: PropTypes.string,
+  onUserSelect: PropTypes.func.isRequired,
+  hubService: PropTypes.object.isRequired
 };
 
 export default UserProperties;

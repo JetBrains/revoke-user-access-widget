@@ -7,13 +7,16 @@ import {
 } from './ReduxStore';
 
 
-const user2item = user => ({
-  key: user.id,
-  label: `${user.name} (${user.login})`,
-  description: ((user.profile || {}).email || {}).email,
-  icon: user.profile.avatar.url,
-  user
-});
+const user2item = user => {
+  const email = ((user.profile || {}).email || {}).email;
+  return {
+    key: user.id,
+    label: user.name,
+    description: `${user.login} ${email ? `(${email})` : ''}`,
+    icon: user.profile.avatar.url,
+    user
+  };
+};
 
 const canLoadMoreUsers = userPage => {
   if (!userPage || !userPage.users) {
