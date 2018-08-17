@@ -79,12 +79,12 @@
 
 .userInfo {
   display: flex;
-  align-items: center;
 
   overflow: hidden;
 
+  align-items: center;
+
   padding: unit 4px;
-  box-shadow: 0 1px 4px color(borders-color a(0.35));
 }
 
 .userInfoAvatar {
@@ -92,6 +92,7 @@
 }
 
 .userInfoContent {
+  padding-top: calc(unit / 2);
   padding-left: calc(2 * unit);
 }
 
