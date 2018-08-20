@@ -29,21 +29,8 @@
   padding-bottom: calc(unit * 6);
 }
 
-.user-panel {
-  margin-top: calc(unit * 2);
-}
-
 .property-table {
   margin-top: calc(unit * 2);
-}
-
-.loadMoreButton {
-  text-align: center;
-
-  border: 1px dashed borders-color;
-  border-radius: 3px;
-
-  font-size: font-size-smaller;
 }
 
 .loadMoreButton {
@@ -78,6 +65,7 @@
 }
 
 .userTag {
+  display: inline !important;
   overflow: hidden;
 
   margin-top: 1px;
@@ -90,18 +78,28 @@
 }
 
 .userInfo {
+  display: flex;
+
   overflow: hidden;
 
+  align-items: center;
+
+  padding: unit 4px;
+}
+
+.userInfoAvatar {
+  cursor: pointer;
+}
+
+.userInfoContent {
+  padding-top: calc(unit / 2);
+  padding-left: calc(2 * unit);
+}
+
+.userNameLine {
+  margin-top: -10px;
+
   white-space: nowrap;
-}
-
-.userInfo > div {
-  float: left;
-}
-
-.userInfoContainer {
-  margin: calc(unit * 2) 0;
-  padding: calc(unit * 2) unit;
 }
 
 .tableFirstColumn {

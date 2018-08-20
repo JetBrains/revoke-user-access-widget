@@ -15,12 +15,12 @@ const UserSelect = connect(
     selectedUserOption,
     usersOptions
   }) => ({
-    label: 'Select user',
     multiple: false,
     loading,
     filter: true,
     selected: selectedUserOption,
     size: Select.Size.FULL,
+    type: Select.Type.INLINE,
     minWidth: MinWidth.TARGET,
     data: usersOptions,
 

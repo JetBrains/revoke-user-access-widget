@@ -4,11 +4,19 @@
   "version": "1.0.4",
   "description": "Widget helps to remove user from all groups and teams they is a member. It also helps to revoke user own project roles.",
   "author": "Maxim Mazin",
+  "applicationName": "Hub",
   "products": {
     "Hub": ">=2018.1",
     "YouTrack": ">=2018.1"
   },
   "dependencies": {
     "Hub": ">=2018.1"
+  },
+  "view": {
+    "defaultWidth": 4,
+    "defaultHeight": 3
+  },
+  "capabilities": {
+    "popups": true
   }
 }

@@ -38,7 +38,7 @@ class HubService {
     return this.fetchHub(
       `api/rest/users/${userId}`, {
         query: {
-          fields: 'id,login,name,banned,profile(avatar,email(email,verified)),' +
+          fields: 'id,login,name,banned,banReason,profile(avatar,email(email,verified)),' +
             'groups(id,name),' +
             'teams(id,project(id,name)),' +
             'projectRoles(id,project(id,name),role(id,name)),' +
