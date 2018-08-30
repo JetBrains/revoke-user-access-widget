@@ -2,13 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
+import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import {selectGroups} from './ReduxStore';
 import styles from './app.css';
 
 const columns = hubURL => [{
   id: 'name',
-  title: 'Groups',
+  title: i18n('Groups'),
   className: styles.tableFirstColumn,
   headerClassName: styles.tableFirstColumn,
   getValue: function renderGroupLink(group) {

@@ -4,6 +4,7 @@ import List from '@jetbrains/ring-ui/components/list/list';
 import QueryAssist from '@jetbrains/ring-ui/components/query-assist/query-assist';
 import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
 import Link from '@jetbrains/ring-ui/components/link/link';
+import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import styles from './app.css';
 import withUsersOptionsFiltering from './withUsersOptionsFiltering';
@@ -42,7 +43,7 @@ class UserSearch extends Component {
       <div>
         <div className={styles.searchUserPanel}>
           <QueryAssist
-            placeholder={'Search user'}
+            placeholder={i18n('Search user')}
             glass={true}
             clear={true}
             onApply={this.onFilter}
@@ -64,7 +65,7 @@ class UserSearch extends Component {
               <Link
                 pseudo={true}
               >
-                {'Load more'}
+                {i18n('Load more')}
               </Link>
             </div>
           }

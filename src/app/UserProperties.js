@@ -4,6 +4,7 @@ import Badge from '@jetbrains/ring-ui/components/badge/badge';
 import Link from '@jetbrains/ring-ui/components/link/link';
 import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
 import Avatar, {Size} from '@jetbrains/ring-ui/components/avatar/avatar';
+import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import UserSelect from './UserSelect';
 import styles from './app.css';
@@ -33,7 +34,7 @@ const UserProperties = ({user, hubURL, onUserSelect, hubService}) => {
                 <Badge
                   className={styles.userTag}
                   invalid={true}
-                >{'banned'}</Badge>
+                >{i18n('banned')}</Badge>
               </Tooltip>
             )
           }
@@ -53,7 +54,7 @@ const UserProperties = ({user, hubURL, onUserSelect, hubService}) => {
                 valid={email.verified}
                 className={styles.userTag}
               >
-                {email.verified ? 'email verified' : 'email not verified'}
+                {email.verified ? i18n('email verified') : i18n('email not verified')}
               </Badge>
             }
           </div>

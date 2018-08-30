@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import MultiTable from '@jetbrains/ring-ui/components/table/multitable';
 import Panel from '@jetbrains/ring-ui/components/panel/panel';
 import Button from '@jetbrains/ring-ui/components/button/button';
+import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import UserPropertiesContainer from './UserPropertiesContainer';
 import GroupsTable from './GroupsTable';
@@ -58,10 +59,10 @@ const SelectedUserForm = (
         primary={true}
         loader={revokingAccess}
         onClick={onRevokeAccess}
-      >{'Revoke selected items'}</Button>
+      >{i18n('Revoke selected items')}</Button>
       <Button
         onClick={onCancel}
-      >{'Finish'}</Button>
+      >{i18n('Finish')}</Button>
     </Panel>
   </div>
 );
