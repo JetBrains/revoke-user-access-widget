@@ -2,13 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
+import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import {selectRoles} from './ReduxStore';
 import styles from './app.css';
 
 const columns = hubURL => [{
   id: 'role',
-  title: 'Project Roles',
+  title: i18n('Project Roles'),
   className: styles.tableFirstColumn,
   headerClassName: styles.tableFirstColumn,
   getValue: projectRole => (projectRole.role &&
@@ -19,7 +20,7 @@ const columns = hubURL => [{
   )
 }, {
   id: 'project',
-  title: 'Project',
+  title: i18n('Project'),
   getValue: projectRole => (projectRole.project &&
     <Link
       href={`${hubURL}/projects-administration/${projectRole.project.id}?tab=access`}

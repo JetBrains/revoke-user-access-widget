@@ -2,13 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Table from '@jetbrains/ring-ui/components/table/table';
 import Link from '@jetbrains/ring-ui/components/link/link';
+import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import {selectTeams} from './ReduxStore';
 import styles from './app.css';
 
 const columns = hubURL => [{
   id: 'project',
-  title: 'Teams',
+  title: i18n('Teams'),
   className: styles.tableFirstColumn,
   headerClassName: styles.tableFirstColumn,
   getValue: team => (team.project &&
