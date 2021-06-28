@@ -3,85 +3,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: youtrackjetbrains\n"
-"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: youtrackjetbrains\n"
 "X-Crowdin-Project-ID: 295498\n"
-"X-Crowdin-Language: ru\n"
+"X-Crowdin-Language: eo\n"
 "X-Crowdin-File: /widgets/revoke-user-access-widget/default.pot\n"
 "X-Crowdin-File-ID: 28504\n"
-"Language-Team: Russian\n"
-"Language: ru_RU\n"
+"Language-Team: Esperanto\n"
+"Language: eo_UY\n"
 "PO-Revision-Date: 2021-06-28 16:22\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
-msgstr "Модуль аутентификации"
+msgstr "crwdns738268:0crwdne738268:0"
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
-msgstr "Завершить"
+msgstr "crwdns738269:0crwdne738269:0"
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
-msgstr "Группы"
+msgstr "crwdns738270:0crwdne738270:0"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr "январь|февраль|март|апрель|май|июнь|июль|август|сентябрь|октябрь|ноябрь|декабрь"
+msgstr "crwdns738271:0crwdne738271:0"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr "янв|фев|мар|апр|мая|июн|июл|авг|сен|окт|ноя|дек"
+msgstr "crwdns738272:0crwdne738272:0"
 
 #: src/app/UserSearch.js:68
 msgid "Load more"
-msgstr "Загрузить еще"
+msgstr "crwdns738273:0crwdne738273:0"
 
 #: src/app/LoginsTable.js:11
 msgid "Logins"
-msgstr "Логины"
+msgstr "crwdns738274:0crwdne738274:0"
 
 #: src/app/ProjectRolesTable.js:25
 msgid "Project"
-msgstr "Проект"
+msgstr "crwdns738275:0crwdne738275:0"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
-msgstr "Роли в проектах"
+msgstr "crwdns738276:0crwdne738276:0"
 
 #: src/app/SelectedUserForm.js:62
 msgid "Revoke selected items"
-msgstr "Отозвать выбранное"
+msgstr "crwdns738277:0crwdne738277:0"
 
 #: src/app/UserSearch.js:46
 msgid "Search user"
-msgstr "Поиск пользователя"
+msgstr "crwdns738278:0crwdne738278:0"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr "воскресенье|понедельник|вторник|среда|четверг|пятница|суббота"
+msgstr "crwdns738279:0crwdne738279:0"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr "вск|пнд|втр|срд|чтв|птн|сбт"
+msgstr "crwdns738280:0crwdne738280:0"
 
 #: src/app/TeamsTable.js:12
 msgid "Teams"
-msgstr "Команды"
+msgstr "crwdns738281:0crwdne738281:0"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr "ДП|ПП"
+msgstr "crwdns738282:0crwdne738282:0"
 
 #: src/app/UserProperties.js:37
 msgid "banned"
-msgstr "заблокирован"
+msgstr "crwdns738283:0crwdne738283:0"
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"
-msgstr "почта не проверена"
+msgstr "crwdns738284:0crwdne738284:0"
 
 #: src/app/UserProperties.js:57
 msgid "email verified"
-msgstr "почта проверена"
+msgstr "crwdns738285:0crwdne738285:0"
 
