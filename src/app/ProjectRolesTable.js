@@ -12,21 +12,25 @@ const columns = hubURL => [{
   title: i18n('Project Roles'),
   className: styles.tableFirstColumn,
   headerClassName: styles.tableFirstColumn,
-  getValue: projectRole => (projectRole.role &&
-    <Link
-      href={`${hubURL}/roles/${projectRole.role.id}`}
-      target="_blank"
-    >{projectRole.role.name}</Link>
-  )
+  getValue: function getValue(projectRole) {
+    return (projectRole.role &&
+      <Link
+        href={`${hubURL}/roles/${projectRole.role.id}`}
+        target="_blank"
+      >{projectRole.role.name}</Link>
+    );
+  }
 }, {
   id: 'project',
   title: i18n('Project'),
-  getValue: projectRole => (projectRole.project &&
-    <Link
-      href={`${hubURL}/projects-administration/${projectRole.project.id}?tab=access`}
-      target="_blank"
-    >{projectRole.project.name}</Link>
-  )
+  getValue: function getValue(projectRole) {
+    return (projectRole.project &&
+      <Link
+        href={`${hubURL}/projects-administration/${projectRole.project.id}?tab=access`}
+        target="_blank"
+      >{projectRole.project.name}</Link>
+    );
+  }
 }];
 
 const ProjectRolesTable = connect(

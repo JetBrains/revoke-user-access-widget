@@ -12,12 +12,14 @@ const columns = hubURL => [{
   title: i18n('Teams'),
   className: styles.tableFirstColumn,
   headerClassName: styles.tableFirstColumn,
-  getValue: team => (team.project &&
-    <Link
-      href={`${hubURL}/projects-administration/${team.project.id}?tab=team`}
-      target="_blank"
-    >{team.project.name}</Link>
-  )
+  getValue: function getValue(team) {
+    return (team.project &&
+      <Link
+        href={`${hubURL}/projects-administration/${team.project.id}?tab=team`}
+        target="_blank"
+      >{team.project.name}</Link>
+    );
+  }
 }];
 
 const TeamsTable = connect(
