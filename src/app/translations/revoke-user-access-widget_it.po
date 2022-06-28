@@ -11,15 +11,15 @@ msgstr ""
 "X-Crowdin-File-ID: 419918\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-06-28 16:23\n"
+"PO-Revision-Date: 2022-06-28 20:46\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
-msgstr ""
+msgstr "Modulo di autenticazione"
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
-msgstr ""
+msgstr "Termina"
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
@@ -27,19 +27,19 @@ msgstr "Gruppi"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr ""
+msgstr "Gennaio|Febbraio|Marzo|Aprile|Maggio|Giugno|Luglio|Agosto|Settembre|Ottobre|Novembre|Dicembre"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "Gen|Feb|Mar|Apr|Mag|Giu|Lug|Ago|Set|Ott|Nov|Dic"
 
 #: src/app/UserSearch.js:68
 msgid "Load more"
-msgstr ""
+msgstr "Carica altro"
 
 #: src/app/LoginsTable.js:11
 msgid "Logins"
-msgstr ""
+msgstr "Accessi"
 
 #: src/app/ProjectRolesTable.js:25
 msgid "Project"
@@ -47,41 +47,41 @@ msgstr "Progetto"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
-msgstr ""
+msgstr "Ruoli di progetto"
 
 #: src/app/SelectedUserForm.js:62
 msgid "Revoke selected items"
-msgstr ""
+msgstr "Revoca gli elementi selezionati"
 
 #: src/app/UserSearch.js:46
 msgid "Search user"
-msgstr ""
+msgstr "Cerca un utente"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr ""
+msgstr "Domenica|Lunedi|Martedi|Mercoledi|Giovedi|Venerdi|Sabato"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr ""
+msgstr "Dom|Lun|Mar|Mer|Gio|Ven|Sab"
 
 #: src/app/TeamsTable.js:12
 msgid "Teams"
-msgstr ""
+msgstr "Team"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "am|pm"
 
 #: src/app/UserProperties.js:37
 msgid "banned"
-msgstr ""
+msgstr "bloccato"
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"
-msgstr ""
+msgstr "e-mail non verificata"
 
 #: src/app/UserProperties.js:57
 msgid "email verified"
-msgstr ""
+msgstr "e-mail verificata"
 

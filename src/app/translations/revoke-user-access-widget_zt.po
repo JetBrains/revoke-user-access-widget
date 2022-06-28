@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 419918\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2021-06-28 16:23\n"
+"PO-Revision-Date: 2022-06-28 06:04\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: src/app/ProjectRolesTable.js:25
 msgid "Project"
-msgstr ""
+msgstr "專案"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"

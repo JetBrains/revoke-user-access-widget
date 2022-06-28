@@ -11,11 +11,11 @@ msgstr ""
 "X-Crowdin-File-ID: 419918\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2021-06-28 16:25\n"
+"PO-Revision-Date: 2022-06-28 14:10\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
-msgstr ""
+msgstr "Модуль автентифікації"
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
@@ -23,15 +23,15 @@ msgstr ""
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
-msgstr ""
+msgstr "Групи"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr ""
+msgstr "Січень|Лютий|Березень|Квітень|Травень|Червень|Липень|Серпень|Вересень|Жовтень|Листопад|Грудень"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "Січ|Лют|Бер|Кві|Тра|Чер|Лип|Сер|Вер|Жов|Лис|Гру"
 
 #: src/app/UserSearch.js:68
 msgid "Load more"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: src/app/ProjectRolesTable.js:25
 msgid "Project"
-msgstr ""
+msgstr "Проєкт"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
@@ -59,15 +59,15 @@ msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr ""
+msgstr "Неділя|Понеділок|Вівторок|Середа|Четвер|Пʼятниця|Субота"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr ""
+msgstr "Нд|Пн|Вт|Ср|Чт|Пт|Сб"
 
 #: src/app/TeamsTable.js:12
 msgid "Teams"
-msgstr ""
+msgstr "Команди"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: src/app/UserProperties.js:37
 msgid "banned"
-msgstr ""
+msgstr "заблоковано"
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"

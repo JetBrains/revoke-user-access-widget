@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 419918\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2021-06-28 16:22\n"
+"PO-Revision-Date: 2022-06-28 20:46\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
@@ -19,7 +19,7 @@ msgstr "Hitelesítő modul"
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
-msgstr ""
+msgstr "Befejezés"
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
@@ -47,11 +47,11 @@ msgstr "Projekt"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
-msgstr ""
+msgstr "Projekt-szerepkörök"
 
 #: src/app/SelectedUserForm.js:62
 msgid "Revoke selected items"
-msgstr ""
+msgstr "Kijelölt elemek visszavonása"
 
 #: src/app/UserSearch.js:46
 msgid "Search user"
@@ -79,9 +79,9 @@ msgstr "kitiltott"
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"
-msgstr ""
+msgstr "e-mail nem hitelesített"
 
 #: src/app/UserProperties.js:57
 msgid "email verified"
-msgstr ""
+msgstr "e-mail hitelesítve"
 

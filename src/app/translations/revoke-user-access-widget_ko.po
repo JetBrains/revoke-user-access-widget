@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: youtrack-custom-localization\n"
+"Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: youtrack-custom-localization\n"
-"X-Crowdin-Project-ID: 309400\n"
+"X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: ko\n"
 "X-Crowdin-File: /widgets/revoke-user-access-widget/default.pot\n"
-"X-Crowdin-File-ID: 419918\n"
+"X-Crowdin-File-ID: 28504\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2021-06-28 16:23\n"
+"PO-Revision-Date: 2022-06-28 14:06\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
@@ -19,7 +19,7 @@ msgstr "인증 모듈"
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
-msgstr ""
+msgstr "완료"
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
@@ -35,7 +35,7 @@ msgstr "1월|2월|3월|4월|5월|6월|7월|8월|9월|10월|11월|12월"
 
 #: src/app/UserSearch.js:68
 msgid "Load more"
-msgstr ""
+msgstr "더 많이 불러오기"
 
 #: src/app/LoginsTable.js:11
 msgid "Logins"
@@ -43,19 +43,19 @@ msgstr "로그인"
 
 #: src/app/ProjectRolesTable.js:25
 msgid "Project"
-msgstr ""
+msgstr "프로젝트"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
-msgstr ""
+msgstr "프로젝트 규칙"
 
 #: src/app/SelectedUserForm.js:62
 msgid "Revoke selected items"
-msgstr ""
+msgstr "선택된 항목 취소"
 
 #: src/app/UserSearch.js:46
 msgid "Search user"
-msgstr ""
+msgstr "사용자 검색"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -75,13 +75,13 @@ msgstr "오전|오후"
 
 #: src/app/UserProperties.js:37
 msgid "banned"
-msgstr ""
+msgstr "차단됨"
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"
-msgstr ""
+msgstr "검증되지 않은 이메일"
 
 #: src/app/UserProperties.js:57
 msgid "email verified"
-msgstr ""
+msgstr "이메일 검증됨"
 

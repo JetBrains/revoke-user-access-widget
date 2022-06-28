@@ -11,15 +11,15 @@ msgstr ""
 "X-Crowdin-File-ID: 419918\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2021-06-28 16:23\n"
+"PO-Revision-Date: 2022-06-27 17:33\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
-msgstr ""
+msgstr "Autentizační modul"
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
-msgstr ""
+msgstr "Dokončit"
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
@@ -35,7 +35,7 @@ msgstr "Led|Úno|Bře|Dub|Kvě|Čer|Čvc|Srp|Zář|Říj|Lis|Pro"
 
 #: src/app/UserSearch.js:68
 msgid "Load more"
-msgstr ""
+msgstr "Nahrát víc"
 
 #: src/app/LoginsTable.js:11
 msgid "Logins"
@@ -47,7 +47,7 @@ msgstr "Projekt"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
-msgstr ""
+msgstr "Role v projektu"
 
 #: src/app/SelectedUserForm.js:62
 msgid "Revoke selected items"
@@ -67,7 +67,7 @@ msgstr "Ne|Po|Út|St|Čt|Pá|So"
 
 #: src/app/TeamsTable.js:12
 msgid "Teams"
-msgstr ""
+msgstr "Týmy"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -79,7 +79,7 @@ msgstr "zakázán"
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"
-msgstr ""
+msgstr "email není ověřen"
 
 #: src/app/UserProperties.js:57
 msgid "email verified"
