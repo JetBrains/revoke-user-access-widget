@@ -11,15 +11,15 @@ msgstr ""
 "X-Crowdin-File-ID: 419918\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2022-06-28 21:48\n"
+"PO-Revision-Date: 2023-07-28 13:13\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
-msgstr ""
+msgstr "מודול אימות"
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
-msgstr ""
+msgstr "סיום"
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
@@ -31,15 +31,15 @@ msgstr "ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|או�
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "ינו'|פבר'|מרץ|אפר'|מאי|יונ'|יול'|אוג'|ספט'|אוק'|נוב'|דצמ'"
 
 #: src/app/UserSearch.js:68
 msgid "Load more"
-msgstr ""
+msgstr "לטעון עוד"
 
 #: src/app/LoginsTable.js:11
 msgid "Logins"
-msgstr ""
+msgstr "כניסות"
 
 #: src/app/ProjectRolesTable.js:25
 msgid "Project"
@@ -47,15 +47,15 @@ msgstr "פרויקט"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
-msgstr ""
+msgstr "תפקידים בפרויקט"
 
 #: src/app/SelectedUserForm.js:62
 msgid "Revoke selected items"
-msgstr ""
+msgstr "ביטול הפריטים שנבחרו"
 
 #: src/app/UserSearch.js:46
 msgid "Search user"
-msgstr ""
+msgstr "חיפוש משתמש"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -67,21 +67,21 @@ msgstr "א'|ב'|ג'|ד'|ה'|ו'|ש'"
 
 #: src/app/TeamsTable.js:12
 msgid "Teams"
-msgstr ""
+msgstr "צוותים"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "לפנ\"צ|אחה\"צ"
 
 #: src/app/UserProperties.js:37
 msgid "banned"
-msgstr ""
+msgstr "נחסם"
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"
-msgstr ""
+msgstr "כתובת הדוא\"ל לא אומתה"
 
 #: src/app/UserProperties.js:57
 msgid "email verified"
-msgstr ""
+msgstr "כתובת הדוא\"ל אומתה"
 

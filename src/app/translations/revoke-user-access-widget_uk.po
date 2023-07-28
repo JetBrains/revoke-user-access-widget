@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 419918\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2022-06-28 21:48\n"
+"PO-Revision-Date: 2023-07-28 13:14\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
@@ -19,7 +19,7 @@ msgstr "Модуль автентифікації"
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
-msgstr ""
+msgstr "Завершити"
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
@@ -35,11 +35,11 @@ msgstr "Січ|Лют|Бер|Кві|Тра|Чер|Лип|Сер|Вер|Жов|Л
 
 #: src/app/UserSearch.js:68
 msgid "Load more"
-msgstr ""
+msgstr "Завантажити ще"
 
 #: src/app/LoginsTable.js:11
 msgid "Logins"
-msgstr ""
+msgstr "Логіни"
 
 #: src/app/ProjectRolesTable.js:25
 msgid "Project"
@@ -47,15 +47,15 @@ msgstr "Проєкт"
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
-msgstr ""
+msgstr "Ролі в проєкті"
 
 #: src/app/SelectedUserForm.js:62
 msgid "Revoke selected items"
-msgstr ""
+msgstr "Скасувати вибір елементів"
 
 #: src/app/UserSearch.js:46
 msgid "Search user"
-msgstr ""
+msgstr "Пошук користувача"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -71,7 +71,7 @@ msgstr "Команди"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "дп|пп"
 
 #: src/app/UserProperties.js:37
 msgid "banned"
@@ -79,9 +79,9 @@ msgstr "заблоковано"
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"
-msgstr ""
+msgstr "адресу електронної пошти не підтверджено"
 
 #: src/app/UserProperties.js:57
 msgid "email verified"
-msgstr ""
+msgstr "адресу електронної пошти підтверджено"
 

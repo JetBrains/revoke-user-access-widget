@@ -3,85 +3,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: youtrack-custom-localization\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: youtrack-custom-localization\n"
 "X-Crowdin-Project-ID: 309400\n"
-"X-Crowdin-Language: hu\n"
+"X-Crowdin-Language: th\n"
 "X-Crowdin-File: /widgets/revoke-user-access-widget/default.pot\n"
 "X-Crowdin-File-ID: 419918\n"
-"Language-Team: Hungarian\n"
-"Language: hu_HU\n"
-"PO-Revision-Date: 2023-07-28 13:06\n"
+"Language-Team: Thai\n"
+"Language: th_TH\n"
+"PO-Revision-Date: 2023-07-28 13:14\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
-msgstr "Hitelesítő modul"
+msgstr ""
 
 #: src/app/SelectedUserForm.js:65
 msgid "Finish"
-msgstr "Befejezés"
+msgstr ""
 
 #: src/app/GroupsTable.js:12
 msgid "Groups"
-msgstr "Csoportok"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr "Január|Február|Március|Április|Május|Június|Július|Augusztus|Szeptember|Október|November|December"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr "Jan|Febr|Már|Ápr|Máj|Jún|Júl|Aug|Szept|Okt|Nov|Dec"
+msgstr ""
 
 #: src/app/UserSearch.js:68
 msgid "Load more"
-msgstr "Több betöltése"
+msgstr ""
 
 #: src/app/LoginsTable.js:11
 msgid "Logins"
-msgstr "Bejelentkezések"
+msgstr ""
 
 #: src/app/ProjectRolesTable.js:25
 msgid "Project"
-msgstr "Projekt"
+msgstr ""
 
 #: src/app/ProjectRolesTable.js:12
 msgid "Project Roles"
-msgstr "Projekt-szerepkörök"
+msgstr ""
 
 #: src/app/SelectedUserForm.js:62
 msgid "Revoke selected items"
-msgstr "Kijelölt elemek visszavonása"
+msgstr ""
 
 #: src/app/UserSearch.js:46
 msgid "Search user"
-msgstr "Felhasználó keresése "
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr "Vasárnap|Hétfő|Kedd|Szerda|Csütörtök|Péntek|Szombat"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr "Vas|Hét|Ked|Sze|Csü|Pén|Szo"
+msgstr ""
 
 #: src/app/TeamsTable.js:12
 msgid "Teams"
-msgstr "Csapatok"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr "am|pm"
+msgstr ""
 
 #: src/app/UserProperties.js:37
 msgid "banned"
-msgstr "kitiltott"
+msgstr ""
 
 #: src/app/UserProperties.js:57
 msgid "email not verified"
-msgstr "e-mail nem hitelesített"
+msgstr ""
 
 #: src/app/UserProperties.js:57
 msgid "email verified"
-msgstr "e-mail hitelesítve"
+msgstr ""
 
