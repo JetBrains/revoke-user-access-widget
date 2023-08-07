@@ -1,7 +1,7 @@
 {
   "key": "revoke-user-access",
   "name": "Revoke User Access",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "This widget lets you remove a user from all groups and teams where they are a member. It also lets you revoke your own project roles.",
   "author": "JetBrains",
   "applicationName": "Hub",
