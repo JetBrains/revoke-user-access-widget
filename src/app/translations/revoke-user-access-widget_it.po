@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 419918\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2023-08-10 00:06\n"
+"PO-Revision-Date: 2023-08-10 00:42\n"
 
 #: src/app/LoginsTable.js:22
 msgid "Auth Module"
