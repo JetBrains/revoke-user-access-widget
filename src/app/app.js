@@ -13,8 +13,9 @@ import HubService from './HubService';
 import {initTranslations} from './translations';
 
 
-DashboardAddons.registerWidget(dashboardApi => {
+DashboardAddons.registerWidget((dashboardApi, registerWidgetApi) => {
   initTranslations(DashboardAddons.locale);
+  registerWidgetApi({});
 
   const store = createStore();
   const hubService = new HubService(dashboardApi.fetchHub);
