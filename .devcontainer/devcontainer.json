@@ -1,0 +1,7 @@
+// Info https://containers.dev/implementors/json_reference/
+{
+    "name": "revoke-user-access-widget",
+    "forwardPorts": [9010],
+    "image":  "huston007/node-electron",
+    "postCreateCommand": "npm install"
+  }
